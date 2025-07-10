@@ -1,0 +1,151 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>ZEDMEMES</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <header>
+    <h1>ZEDMEMES</h1>
+    <div class="auth-buttons">
+      <button class="login-btn" aria-label="Log in">Log in</button>
+      <button class="signup-btn" aria-label="Sign up">Sign Up</button>
+      <label class="toggle">
+        <input type="checkbox" id="darkModeToggle">
+        <span class="slider">🌙</span>
+      </label>
+    </div>
+  </header>
+
+  <main>
+    <div class="meme-grid">
+      <div class="meme-card">
+        <img src="#" alt="Meme">
+        <div class="reactions">
+          <span class="likes">102</span>
+          <span class="dislikes">52</span>
+        </div>
+      </div>
+
+      <div class="meme-card">
+        <img src="#" alt="Meme">
+        <div class="reactions">
+          <span class="likes">210</span>
+          <span class="dislikes">85</span>
+        </div>
+      </div>
+
+      <div class="meme-card">
+        <img src="#" alt="Meme">
+        <div class="reactions">
+          <span class="likes">80</span>
+          <span class="dislikes">42</span>
+        </div>
+      </div>
+
+      <div class="meme-card">
+        <img src="#" alt="Meme">
+        <div class="reactions">
+          <span class="likes">67</span>
+          <span class="dislikes">33</span>
+        </div>
+      </div>
+
+      <div class="meme-card upload-trigger" onclick="toggleUploadModal()">
+        <div class="upload-icon">+</div>
+        <p>Upload Meme</p>
+      </div>
+
+      <div class="meme-card">
+        <img src="#" alt="Meme">
+        <div class="reactions">
+          <span class="likes">52</span>
+          <span class="dislikes">32</span>
+        </div>
+      </div>
+
+      <div class="meme-card">
+        <img src="#" alt="Meme">
+        <div class="reactions">
+          <span class="likes">13</span>
+          <span class="dislikes">30</span>
+        </div>
+      </div>
+
+      <div class="meme-card">
+        <img src="#" alt="Meme">
+        <div class="reactions">
+          <span class="likes">88</span>
+          <span class="dislikes">40</span>
+        </div>
+      </div>
+
+      <div class="meme-card">
+        <img src="#" alt="Meme">
+        <div class="reactions">
+          <span class="likes">50</span>
+          <span class="dislikes">30</span>
+        </div>
+      </div>
+
+      <div class="meme-card">
+        <img src="#" alt="Meme">
+        <div class="reactions">
+          <span class="likes">12</span>
+          <span class="dislikes">47</span>
+        </div>
+      </div>
+    </div>
+  </main>
+
+  <div class="modal" id="uploadModal">
+    <div class="modal-content">
+      <h2>Upload Meme</h2>
+      <form id="uploadForm">
+        <label for="memeFile" class="file-upload">
+          <span>Choose File</span>
+          <input type="file" id="memeFile" name="meme" required accept="image/*">
+        </label>
+        <input type="text" name="caption" placeholder="Caption (optional)">
+        <div class="modal-actions">
+          <button type="button" onclick="toggleUploadModal()">Cancel</button>
+          <button type="submit">Upload</button>
+        </div>
+      </form>
+    </div>
+  </div>
+
+  <div class="modal" id="loginModal">
+    <div class="modal-content">
+      <h2>Login</h2>
+      <form id="loginForm">
+        <input type="text" name="username" placeholder="Username" required>
+        <input type="password" name="password" placeholder="Password" required>
+        <div class="modal-actions">
+          <button type="button" onclick="toggleModal('loginModal')">Cancel</button>
+          <button type="submit">Log In</button>
+        </div>
+      </form>
+    </div>
+  </div>
+
+  <div class="modal" id="signupModal">
+    <div class="modal-content">
+      <h2>Sign Up</h2>
+      <form id="signupForm">
+        <input type="text" name="username" placeholder="Username" required>
+        <input type="password" name="password" placeholder="Password" required>
+        <input type="password" name="confirm_password" placeholder="Confirm Password" required>
+        <div class="modal-actions">
+          <button type="button" onclick="toggleModal('signupModal')">Cancel</button>
+          <button type="submit">Sign Up</button>
+        </div>
+      </form>
+    </div>
+  </div>
+
+  <script src="script.js"></script>
+</body>
+</html>
