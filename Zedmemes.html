@@ -4,148 +4,337 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>ZEDMEMES</title>
-  <link rel="stylesheet" href="style.css">
+  <!-- Semantic UI CSS -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/semantic-ui/2.4.1/semantic.min.css">
+  <!-- Font Awesome -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+  <!-- Custom CSS -->
+   <link rel="stylesheet" href="style.css">
+
 </head>
 <body>
-  <header>
-    <h1>ZEDMEMES</h1>
-    <div class="auth-buttons">
-      <button class="login-btn" aria-label="Log in">Log in</button>
-      <button class="signup-btn" aria-label="Sign up">Sign Up</button>
-      <label class="toggle">
-        <input type="checkbox" id="darkModeToggle">
-        <span class="slider">🌙</span>
-      </label>
+  <div class="main-header">
+    <div class="header-content">
+      <h1 class="logo">ZEDMEMES</h1>
+      <div class="auth-section">
+        <button class="ui primary button" onclick="toggleModal('loginModal')">
+          <i class="sign in icon"></i>
+          Login
+        </button>
+        <button class="ui secondary button" onclick="toggleModal('signupModal')">
+          <i class="user plus icon"></i>
+          Sign Up
+        </button>
+        <button class="theme-toggle" onclick="toggleDarkMode()" title="Toggle Dark Mode">
+          <i class="moon icon"></i>
+        </button>
+      </div>
     </div>
-  </header>
+  </div>
 
-  <main>
+  <div class="ui container">
     <div class="meme-grid">
-      <div class="meme-card">
-        <img src="#" alt="Meme">
-        <div class="reactions">
-          <span class="likes">102</span>
-          <span class="dislikes">52</span>
+      <!-- Sample meme cards -->
+      <div class="meme-card" data-meme-id="1">
+        <div class="meme-image">
+          <img src="https://via.placeholder.com/300" alt="Funny meme" style="width: 100%; height: 100%; object-fit: cover;">
+        </div>
+        <div class="meme-actions">
+          <button class="reaction-btn like" data-reaction="like">
+            <i class="fas fa-heart"></i>
+            <span class="count">102</span>
+          </button>
+          <button class="reaction-btn upvote" data-reaction="upvote">
+            <i class="fas fa-arrow-up"></i>
+            <span class="count">52</span>
+          </button>
+          <button class="reaction-btn share" data-reaction="share">
+            <i class="fas fa-share"></i>
+          </button>
+          <button class="reaction-btn download" data-reaction="download">
+            <i class="fas fa-download"></i>
+          </button>
         </div>
       </div>
 
-      <div class="meme-card">
-        <img src="#" alt="Meme">
-        <div class="reactions">
-          <span class="likes">210</span>
-          <span class="dislikes">85</span>
+      <div class="meme-card" data-meme-id="2">
+        <div class="meme-image">
+          <img src="https://via.placeholder.com/300" alt="Another meme" style="width: 100%; height: 100%; object-fit: cover;">
+        </div>
+        <div class="meme-actions">
+          <button class="reaction-btn like" data-reaction="like">
+            <i class="fas fa-heart"></i>
+            <span class="count">210</span>
+          </button>
+          <button class="reaction-btn upvote" data-reaction="upvote">
+            <i class="fas fa-arrow-up"></i>
+            <span class="count">85</span>
+          </button>
+          <button class="reaction-btn share" data-reaction="share">
+            <i class="fas fa-share"></i>
+          </button>
+          <button class="reaction-btn download" data-reaction="download">
+            <i class="fas fa-download"></i>
+          </button>
         </div>
       </div>
 
-      <div class="meme-card">
-        <img src="#" alt="Meme">
-        <div class="reactions">
-          <span class="likes">80</span>
-          <span class="dislikes">42</span>
+      <div class="meme-card upload-card" onclick="toggleModal('uploadModal')">
+        <div class="upload-icon">
+          <i class="plus icon"></i>
+        </div>
+        <h3>Upload Meme</h3>
+        <p>Share your funny content</p>
+      </div>
+
+      <div class="meme-card" data-meme-id="3">
+        <div class="meme-image">
+          <img src="https://via.placeholder.com/300" alt="Third meme" style="width: 100%; height: 100%; object-fit: cover;">
+        </div>
+        <div class="meme-actions">
+          <button class="reaction-btn like" data-reaction="like">
+            <i class="fas fa-heart"></i>
+            <span class="count">80</span>
+          </button>
+          <button class="reaction-btn upvote" data-reaction="upvote">
+            <i class="fas fa-arrow-up"></i>
+            <span class="count">42</span>
+          </button>
+          <button class="reaction-btn share" data-reaction="share">
+            <i class="fas fa-share"></i>
+          </button>
+          <button class="reaction-btn download" data-reaction="download">
+            <i class="fas fa-download"></i>
+          </button>
         </div>
       </div>
 
-      <div class="meme-card">
-        <img src="#" alt="Meme">
-        <div class="reactions">
-          <span class="likes">67</span>
-          <span class="dislikes">33</span>
+      <div class="meme-card" data-meme-id="4">
+        <div class="meme-image">
+          <img src="https://via.placeholder.com/300" alt="Fourth meme" style="width: 100%; height: 100%; object-fit: cover;">
+        </div>
+        <div class="meme-actions">
+          <button class="reaction-btn like" data-reaction="like">
+            <i class="fas fa-heart"></i>
+            <span class="count">67</span>
+          </button>
+          <button class="reaction-btn upvote" data-reaction="upvote">
+            <i class="fas fa-arrow-up"></i>
+            <span class="count">33</span>
+          </button>
+          <button class="reaction-btn share" data-reaction="share">
+            <i class="fas fa-share"></i>
+          </button>
+          <button class="reaction-btn download" data-reaction="download">
+            <i class="fas fa-download"></i>
+          </button>
         </div>
       </div>
 
-      <div class="meme-card upload-trigger" onclick="toggleUploadModal()">
-        <div class="upload-icon">+</div>
-        <p>Upload Meme</p>
-      </div>
-
-      <div class="meme-card">
-        <img src="#" alt="Meme">
-        <div class="reactions">
-          <span class="likes">52</span>
-          <span class="dislikes">32</span>
+      <div class="meme-card" data-meme-id="5">
+        <div class="meme-image">
+          <img src="https://via.placeholder.com/300" alt="Fifth meme" style="width: 100%; height: 100%; object-fit: cover;">
+        </div>
+        <div class="meme-actions">
+          <button class="reaction-btn like" data-reaction="like">
+            <i class="fas fa-heart"></i>
+            <span class="count">52</span>
+          </button>
+          <button class="reaction-btn upvote" data-reaction="upvote">
+            <i class="fas fa-arrow-up"></i>
+            <span class="count">32</span>
+          </button>
+          <button class="reaction-btn share" data-reaction="share">
+            <i class="fas fa-share"></i>
+          </button>
+          <button class="reaction-btn download" data-reaction="download">
+            <i class="fas fa-download"></i>
+          </button>
         </div>
       </div>
 
-      <div class="meme-card">
-        <img src="#" alt="Meme">
-        <div class="reactions">
-          <span class="likes">13</span>
-          <span class="dislikes">30</span>
+      <div class="meme-card" data-meme-id="6">
+        <div class="meme-image">
+          <img src="https://via.placeholder.com/300" alt="Sixth meme" style="width: 100%; height: 100%; object-fit: cover;">
+        </div>
+        <div class="meme-actions">
+          <button class="reaction-btn like" data-reaction="like">
+            <i class="fas fa-heart"></i>
+            <span class="count">13</span>
+          </button>
+          <button class="reaction-btn upvote" data-reaction="upvote">
+            <i class="fas fa-arrow-up"></i>
+            <span class="count">30</span>
+          </button>
+          <button class="reaction-btn share" data-reaction="share">
+            <i class="fas fa-share"></i>
+          </button>
+          <button class="reaction-btn download" data-reaction="download">
+            <i class="fas fa-download"></i>
+          </button>
         </div>
       </div>
 
-      <div class="meme-card">
-        <img src="#" alt="Meme">
-        <div class="reactions">
-          <span class="likes">88</span>
-          <span class="dislikes">40</span>
+      <div class="meme-card" data-meme-id="7">
+        <div class="meme-image">
+          <img src="https://via.placeholder.com/300" alt="Seventh meme" style="width: 100%; height: 100%; object-fit: cover;">
+        </div>
+        <div class="meme-actions">
+          <button class="reaction-btn like" data-reaction="like">
+            <i class="fas fa-heart"></i>
+            <span class="count">88</span>
+          </button>
+          <button class="reaction-btn upvote" data-reaction="upvote">
+            <i class="fas fa-arrow-up"></i>
+            <span class="count">40</span>
+          </button>
+          <button class="reaction-btn share" data-reaction="share">
+            <i class="fas fa-share"></i>
+          </button>
+          <button class="reaction-btn download" data-reaction="download">
+            <i class="fas fa-download"></i>
+          </button>
         </div>
       </div>
-
-      <div class="meme-card">
-        <img src="#" alt="Meme">
-        <div class="reactions">
-          <span class="likes">50</span>
-          <span class="dislikes">30</span>
-        </div>
-      </div>
-
-      <div class="meme-card">
-        <img src="#" alt="Meme">
-        <div class="reactions">
-          <span class="likes">12</span>
-          <span class="dislikes">47</span>
-        </div>
-      </div>
-    </div>
-  </main>
-
-  <div class="modal" id="uploadModal">
-    <div class="modal-content">
-      <h2>Upload Meme</h2>
-      <form id="uploadForm">
-        <label for="memeFile" class="file-upload">
-          <span>Choose File</span>
-          <input type="file" id="memeFile" name="meme" required accept="image/*">
-        </label>
-        <input type="text" name="caption" placeholder="Caption (optional)">
-        <div class="modal-actions">
-          <button type="button" onclick="toggleUploadModal()">Cancel</button>
-          <button type="submit">Upload</button>
-        </div>
-      </form>
     </div>
   </div>
 
-  <div class="modal" id="loginModal">
-    <div class="modal-content">
-      <h2>Login</h2>
-      <form id="loginForm">
-        <input type="text" name="username" placeholder="Username" required>
-        <input type="password" name="password" placeholder="Password" required>
-        <div class="modal-actions">
-          <button type="button" onclick="toggleModal('loginModal')">Cancel</button>
-          <button type="submit">Log In</button>
-        </div>
-      </form>
+  <!-- Upload Modal -->
+  <div class="modal-overlay" id="uploadModal">
+    <div class="ui modal" style="display: block; position: relative;">
+      <div class="header">
+        <i class="upload icon"></i>
+        Upload Meme
+      </div>
+      <div class="content">
+        <form class="ui form" id="uploadForm">
+          <div class="field">
+            <label>Choose File</label>
+            <div class="ui fluid file input">
+              <input type="file" accept="image/*" required style="display: none;" id="memeFile">
+              <input type="text" placeholder="No file chosen" readonly id="fileName">
+              <button type="button" class="ui primary button" onclick="document.getElementById('memeFile').click()">
+                <i class="folder open icon"></i>
+                Browse
+              </button>
+            </div>
+          </div>
+          <div class="field">
+            <label>Caption (optional)</label>
+            <input type="text" placeholder="Enter a caption for your meme" id="memeCaption">
+          </div>
+        </form>
+      </div>
+      <div class="actions">
+        <button class="ui cancel button" onclick="toggleModal('uploadModal')">
+          <i class="remove icon"></i>
+          Cancel
+        </button>
+        <button class="ui primary button" onclick="uploadMeme()">
+          <i class="checkmark icon"></i>
+          Upload
+        </button>
+      </div>
     </div>
   </div>
 
-  <div class="modal" id="signupModal">
-    <div class="modal-content">
-      <h2>Sign Up</h2>
-      <form id="signupForm">
-        <input type="text" name="username" placeholder="Username" required>
-        <input type="password" name="password" placeholder="Password" required>
-        <input type="password" name="confirm_password" placeholder="Confirm Password" required>
-        <div class="modal-actions">
-          <button type="button" onclick="toggleModal('signupModal')">Cancel</button>
-          <button type="submit">Sign Up</button>
-        </div>
-      </form>
+  <!-- Login Modal -->
+  <div class="modal-overlay" id="loginModal">
+    <div class="ui modal" style="display: block; position: relative;">
+      <div class="header">
+        <i class="sign in icon"></i>
+        Login
+      </div>
+      <div class="content">
+        <form class="ui form" id="loginForm">
+          <div class="field">
+            <label>Username</label>
+            <div class="ui left icon input">
+              <i class="user icon"></i>
+              <input type="text" placeholder="Username" required id="loginUsername">
+            </div>
+          </div>
+          <div class="field">
+            <label>Password</label>
+            <div class="ui left icon input">
+              <i class="lock icon"></i>
+              <input type="password" placeholder="Password" required id="loginPassword">
+            </div>
+          </div>
+        </form>
+      </div>
+      <div class="actions">
+        <button class="ui cancel button" onclick="toggleModal('loginModal')">
+          <i class="remove icon"></i>
+          Cancel
+        </button>
+        <button class="ui primary button" onclick="login()">
+          <i class="checkmark icon"></i>
+          Log In
+        </button>
+      </div>
     </div>
   </div>
 
+  <!-- Sign Up Modal -->
+  <div class="modal-overlay" id="signupModal">
+    <div class="ui modal" style="display: block; position: relative;">
+      <div class="header">
+        <i class="user plus icon"></i>
+        Sign Up
+      </div>
+      <div class="content">
+        <form class="ui form" id="signupForm">
+          <div class="field">
+            <label>Username</label>
+            <div class="ui left icon input">
+              <i class="user icon"></i>
+              <input type="text" placeholder="Username" required id="signupUsername">
+            </div>
+          </div>
+          <div class="field">
+            <label>Email</label>
+            <div class="ui left icon input">
+              <i class="mail icon"></i>
+              <input type="email" placeholder="Email" required id="signupEmail">
+            </div>
+          </div>
+          <div class="field">
+            <label>Password</label>
+            <div class="ui left icon input">
+              <i class="lock icon"></i>
+              <input type="password" placeholder="Password" required id="signupPassword">
+            </div>
+          </div>
+          <div class="field">
+            <label>Confirm Password</label>
+            <div class="ui left icon input">
+              <i class="lock icon"></i>
+              <input type="password" placeholder="Confirm Password" required id="signupConfirmPassword">
+            </div>
+          </div>
+        </form>
+      </div>
+      <div class="actions">
+        <button class="ui cancel button" onclick="toggleModal('signupModal')">
+          <i class="remove icon"></i>
+          Cancel
+        </button>
+        <button class="ui primary button" onclick="signUp()">
+          <i class="checkmark icon"></i>
+          Sign Up
+        </button>
+      </div>
+    </div>
+  </div>
+
+  <!-- Toast Container -->
+  <div id="toast-container"></div>
+
+  <!-- jQuery and Semantic UI JS -->
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/semantic-ui/2.4.1/semantic.min.js"></script>
   <script src="script.js"></script>
+ 
 </body>
 </html>
