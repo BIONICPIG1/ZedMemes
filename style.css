@@ -1,296 +1,389 @@
-* {
-  box-sizing: border-box;
-  margin: 0;
-  padding: 0;
-  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-}
+ /* Reset and Base Styles */
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
 
-body {
-  background: linear-gradient(to bottom right, #ff758c, #7aa5f7);
-  color: #333;
-  min-height: 100vh;
-  padding: 1rem;
-  transition: background 0.3s, color 0.3s;
-}
+    body {
+      background: linear-gradient(135deg, #667eea, #764ba2, #f093fb, #f5576c, #4facfe, #00f2fe);
+      background-size: 400% 400%;
+      animation: gradientFlow 12s ease infinite;
+      font-family: 'Inter', sans-serif;
+      min-height: 100vh;
+      color: #2c3e50;
+    }
 
-header {
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  margin-bottom: 1.5rem;
-  padding: 0.5rem 1rem;
-  background-color: rgba(255, 255, 255, 0.1);
-  border-radius: 12px;
-  backdrop-filter: blur(5px);
-}
+    @keyframes gradientFlow {
+      0% { background-position: 0% 50%; }
+      50% { background-position: 100% 50%; }
+      100% { background-position: 0% 50%; }
+    }
 
-header h1 {
-  font-size: 2.5rem;
-  color: #fff;
-  text-shadow: 1px 1px 3px rgba(0, 0, 0, 0.2);
-}
+    body.dark-mode {
+      background: linear-gradient(135deg, #2c3e50, #34495e, #4a148c, #6a1b9a, #1a237e, #0d47a1);
+      background-size: 400% 400%;
+      animation: gradientFlow 12s ease infinite;
+      color: #ffffff;
+    }
 
-.auth-buttons {
-  display: flex;
-  align-items: center;
-  gap: 1rem;
-}
+    /* Glass Effect */
+    .glass {
+      background: rgba(255, 255, 255, 0.1);
+      backdrop-filter: blur(10px);
+      border: 1px solid rgba(255, 255, 255, 0.2);
+      border-radius: 12px;
+    }
 
-button {
-  padding: 8px 16px;
-  border: none;
-  border-radius: 20px;
-  background-color: #0b5ed7;
-  color: white;
-  font-weight: bold;
-  cursor: pointer;
-  transition: all 0.3s;
-}
+    .dark-mode .glass {
+      background: rgba(0, 0, 0, 0.3);
+      border-color: rgba(255, 255, 255, 0.1);
+    }
 
-button:hover {
-  background-color: #0948aa;
-  transform: translateY(-2px);
-}
+    /* Header */
+    .main-header {
+      padding: 1.5rem 0;
+      margin-bottom: 2rem;
+    }
 
-.toggle {
-  position: relative;
-  display: inline-block;
-  width: 48px;
-  height: 24px;
-}
+    .header-content {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      max-width: 1200px;
+      margin: 0 auto;
+      padding: 0 2rem;
+    }
 
-.toggle input {
-  display: none;
-}
+    .logo {
+      font-size: 2.5rem;
+      font-weight: 800;
+      color: white;
+      text-shadow: 0 2px 4px rgba(0, 0, 0, 0.3);
+    }
 
-.slider {
-  position: absolute;
-  top: 0;
-  left: 0;
-  width: 48px;
-  height: 24px;
-  background-color: #ccc;
-  border-radius: 24px;
-  text-align: center;
-  line-height: 24px;
-  font-size: 16px;
-  transition: all 0.3s;
-  cursor: pointer;
-}
+    .theme-toggle {
+      padding: 0.8rem;
+      font-size: 1.2rem;
+      color: white;
+      background: none;
+      border: none;
+      cursor: pointer;
+      border-radius: 8px;
+      transition: transform 0.2s ease;
+    }
 
-input:checked + .slider {
-  background-color: #444;
-  color: yellow;
-}
+    .theme-toggle:hover {
+      transform: scale(1.1);
+    }
 
-.meme-grid {
-  display: grid;
-  grid-template-columns: repeat(auto-fill, minmax(180px, 1fr));
-  gap: 1rem;
-  margin-bottom: 2rem;
-}
+    /* Grid Layout */
+    .meme-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+      gap: 1.5rem;
+      max-width: 1200px;
+      margin: 0 auto;
+      padding: 0 2rem;
+    }
 
-.meme-card {
-  background: white;
-  border-radius: 12px;
-  overflow: hidden;
-  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.15);
-  transition: transform 0.2s;
-  cursor: pointer;
-}
+    /* Cards */
+    .meme-card {
+      overflow: hidden;
+      cursor: pointer;
+      transition: transform 0.3s ease;
+    }
 
-.meme-card:hover {
-  transform: scale(1.03);
-}
+    .meme-card:hover {
+      transform: translateY(-5px) scale(1.02);
+    }
 
-.meme-card img {
-  width: 100%;
-  height: 180px;
-  object-fit: cover;
-}
+    .meme-image {
+      width: 100%;
+      height: 200px;
+      background: #f8f9fa;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      color: #6c757d;
+      font-size: 1.1rem;
+    }
 
-.reactions {
-  display: flex;
-  justify-content: space-between;
-  padding: 0.75rem;
-  font-size: 0.9rem;
-  color: #666;
-  font-weight: bold;
-}
+    .dark-mode .meme-image {
+      background: #495057;
+      color: #adb5bd;
+    }
 
-.likes {
-  color: #ff4757;
-}
+    .meme-content {
+      padding: 1.5rem;
+    }
 
-.dislikes {
-  color: #57606f;
-}
+    .meme-actions {
+      display: flex;
+      justify-content: space-around;
+      padding: 0.75rem;
+      background: rgba(255, 255, 255, 0.9);
+      border-top: 1px solid #eee;
+    }
 
-.meme-card.upload-trigger {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  background: rgba(255, 255, 255, 0.8);
-  border: 2px dashed #ccc;
-}
+    .dark-mode .meme-actions {
+      background: rgba(30, 30, 30, 0.9);
+      border-top: 1px solid #444;
+    }
 
-.upload-icon {
-  font-size: 3rem;
-  color: #0b5ed7;
-  margin-bottom: 0.5rem;
-}
+    .reaction-btn {
+      background: none;
+      border: none;
+      cursor: pointer;
+      font-size: 1.1rem;
+      padding: 0.5rem;
+      display: flex;
+      align-items: center;
+      gap: 0.3rem;
+      transition: all 0.2s;
+      border-radius: 50%;
+      width: 2.5rem;
+      height: 2.5rem;
+      justify-content: center;
+    }
 
-.meme-card.upload-trigger p {
-  font-weight: bold;
-  color: #0b5ed7;
-}
+    .reaction-btn:hover {
+      transform: scale(1.1);
+    }
 
-/* Modal */
-.modal {
-  display: none;
-  position: fixed;
-  top: 0;
-  left: 0;
-  right: 0;
-  bottom: 0;
-  background: rgba(0, 0, 0, 0.6);
-  justify-content: center;
-  align-items: center;
-  z-index: 1000;
-}
+    .reaction-btn .count {
+      font-size: 0.9rem;
+      font-weight: bold;
+    }
 
-.modal.show {
-  display: flex;
-}
+    .reaction-btn.like {
+      color: #ff4757;
+    }
 
-.modal-content {
-  background: white;
-  padding: 2rem;
-  border-radius: 12px;
-  width: 90%;
-  max-width: 400px;
-  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.2);
-}
+    .reaction-btn.like.active {
+      background: rgba(255, 71, 87, 0.1);
+    }
 
-.modal-content h2 {
-  margin-bottom: 1.5rem;
-  text-align: center;
-  color: #0b5ed7;
-}
+    .reaction-btn.upvote {
+      color: #2ed573;
+    }
 
-.modal-content input[type="text"],
-.modal-content input[type="password"] {
-  width: 100%;
-  padding: 0.75rem;
-  margin: 0.5rem 0 1rem;
-  border: 1px solid #ddd;
-  border-radius: 8px;
-  font-size: 1rem;
-}
+    .reaction-btn.upvote.active {
+      background: rgba(46, 213, 115, 0.1);
+    }
 
-.file-upload {
-  display: block;
-  padding: 1.5rem;
-  border: 2px dashed #ccc;
-  border-radius: 8px;
-  text-align: center;
-  margin: 0.5rem 0 1rem;
-  cursor: pointer;
-  transition: all 0.3s;
-}
+    .reaction-btn.share {
+      color: #1e90ff;
+    }
 
-.file-upload:hover {
-  border-color: #0b5ed7;
-  background: #f0f8ff;
-}
+    .reaction-btn.download {
+      color: #5352ed;
+    }
 
-.file-upload input[type="file"] {
-  display: none;
-}
+    /* Upload Card */
+    .upload-card {
+      min-height: 250px;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      text-align: center;
+      cursor: pointer;
+      transition: transform 0.3s ease;
+      border: 2px dashed rgba(255, 255, 255, 0.5);
+      color: white;
+    }
 
-.modal-actions {
-  display: flex;
-  justify-content: space-between;
-  margin-top: 1.5rem;
-}
+    .upload-card:hover {
+      transform: translateY(-5px) scale(1.02);
+      border-color: rgba(255, 255, 255, 0.7);
+    }
 
-.modal-actions button {
-  flex: 1;
-  margin: 0 0.5rem;
-}
+    .upload-icon {
+      font-size: 3rem;
+      margin-bottom: 1rem;
+    }
 
-.modal-actions button:first-child {
-  background-color: #ccc;
-  color: #333;
-}
+    .upload-card h3 {
+      font-size: 1.5rem;
+      font-weight: 700;
+      margin-bottom: 0.5rem;
+    }
 
-.modal-actions button:first-child:hover {
-  background-color: #bbb;
-}
+    /* Modal */
+    .modal-overlay {
+      position: fixed;
+      inset: 0;
+      background: rgba(0, 0, 0, 0.6);
+      backdrop-filter: blur(5px);
+      display: none;
+      justify-content: center;
+      align-items: center;
+      z-index: 1000;
+    }
 
-body.dark-mode {
-  background: #121212;
-  color: #f5f5f5;
-}
+    .modal-overlay.active {
+      display: flex;
+    }
 
-body.dark-mode header {
-  background-color: rgba(30, 30, 30, 0.8);
-}
+    .modal-overlay .ui.modal {
+      max-width: 500px;
+      width: 90%;
+      border-radius: 16px;
+      box-shadow: 0 20px 40px rgba(0, 0, 0, 0.3);
+    }
 
-body.dark-mode header h1 {
-  color: #fff;
-}
+    /* Buttons */
+    .ui.button {
+      padding: 0.8rem 1.5rem;
+      border-radius: 8px;
+      font-weight: 600;
+      transition: all 0.2s ease;
+      border: none;
+      cursor: pointer;
+    }
 
-body.dark-mode .meme-card {
-  background: #1e1e1e;
-  color: white;
-}
+    .ui.primary.button {
+      background: #667eea;
+      color: white;
+    }
 
-body.dark-mode .meme-card .reactions {
-  color: #aaa;
-}
+    .ui.primary.button:hover {
+      background: #5a67d8;
+      transform: translateY(-2px);
+    }
 
-body.dark-mode .modal-content {
-  background: #2c2c2c;
-  color: #f5f5f5;
-}
+    .ui.secondary.button {
+      background: #6c757d;
+      color: white;
+    }
 
-body.dark-mode .modal-content input {
-  background-color: #3c3c3c;
-  color: #f5f5f5;
-  border-color: #444;
-}
+    /* Forms */
+    .ui.form input {
+      background: rgba(255, 255, 255, 0.9);
+      border: 1px solid rgba(0, 0, 0, 0.1);
+      border-radius: 8px;
+      padding: 0.8rem 1rem;
+      transition: all 0.2s ease;
+    }
 
-body.dark-mode .file-upload {
-  border-color: #444;
-  background-color: #3c3c3c;
-}
+    .dark-mode .ui.form input {
+      background: rgba(0, 0, 0, 0.4);
+      border-color: rgba(255, 255, 255, 0.2);
+      color: white;
+    }
 
+    .ui.form label {
+      color: #2c3e50;
+      font-weight: 600;
+      margin-bottom: 0.5rem;
+      display: block;
+    }
 
-@media (max-width: 768px) {
-  .meme-grid {
-    grid-template-columns: repeat(2, 1fr);
-  }
+    .dark-mode .ui.form label {
+      color: white;
+    }
 
-  header {
-    flex-direction: column;
-    gap: 1rem;
-    text-align: center;
-  }
+    /* Toast Notifications */
+    .toast {
+      position: fixed;
+      bottom: 20px;
+      left: 50%;
+      transform: translateX(-50%);
+      background: #333;
+      color: white;
+      padding: 12px 24px;
+      border-radius: 4px;
+      z-index: 2000;
+      opacity: 0;
+      transition: opacity 0.3s;
+      backdrop-filter: blur(10px);
+    }
 
-  .auth-buttons {
-    width: 100%;
-    justify-content: center;
-  }
-}
+    .toast.show {
+      opacity: 1;
+    }
 
-@media (max-width: 480px) {
-  .meme-grid {
-    grid-template-columns: 1fr;
-  }
+    .toast.success {
+      background: rgba(33, 186, 69, 0.9);
+    }
 
-  .modal-content {
-    padding: 1.5rem;
-  }
-}
+    .toast.error {
+      background: rgba(219, 40, 40, 0.9);
+    }
+
+    .toast.warning {
+      background: rgba(242, 113, 28, 0.9);
+    }
+
+    .toast.info {
+      background: rgba(33, 133, 208, 0.9);
+    }
+
+    /* Responsive Design */
+    @media (max-width: 768px) {
+      .header-content {
+        flex-direction: column;
+        gap: 1.5rem;
+      }
+      
+      .logo {
+        font-size: 2rem;
+      }
+      
+      .meme-grid {
+        grid-template-columns: 1fr;
+        padding: 0 1rem;
+      }
+    }
+
+    @media (max-width: 480px) {
+      .header-content {
+        padding: 0 1rem;
+      }
+      
+      .logo {
+        font-size: 1.8rem;
+      }
+      
+      .meme-grid {
+        padding: 0 0.5rem;
+      }
+      
+      .upload-card {
+        min-height: 200px;
+      }
+      
+      .upload-icon {
+        font-size: 2.5rem;
+      }
+    }
+
+    /* Apply glass effect to main elements */
+    .main-header,
+    .meme-card,
+    .modal-overlay .ui.modal,
+    .theme-toggle {
+      background: rgba(255, 255, 255, 0.1);
+      backdrop-filter: blur(10px);
+      border: 1px solid rgba(255, 255, 255, 0.2);
+      border-radius: 12px;
+    }
+
+    .dark-mode .main-header,
+    .dark-mode .meme-card,
+    .dark-mode .modal-overlay .ui.modal,
+    .dark-mode .theme-toggle {
+      background: rgba(0, 0, 0, 0.3);
+      border-color: rgba(255, 255, 255, 0.1);
+    }
+
+    /* Fade in animation for new memes */
+    .fade-in {
+      animation: fadeIn 0.5s ease-in;
+    }
+
+    @keyframes fadeIn {
+      from { opacity: 0; transform: translateY(20px); }
+      to { opacity: 1; transform: translateY(0); }
+    }
